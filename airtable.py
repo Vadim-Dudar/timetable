@@ -37,3 +37,18 @@ def get_timetable(day, day_of_week, base_key):
                f"2️⃣ <b>{res['1']}</b> <i>10.10-11.30</i>\n\n" \
                f"3️⃣ <b>{res['2']}</b> <i>12.00-13.20</i>\n\n" \
                f"4️⃣ <b>{res['3']}</b> <i>13.30-14.50</i>"
+
+
+def get_urls_to_connect():
+    urls = Table(config.api_key, config.base_key, 'urls')
+    res = urls.all()
+
+    b = ''
+
+    for r in res:
+        b += f"<b>{r['fields']['Предмет']}</b>:\n {r['fields']['Посилання']}\n\n"
+
+    return b
+
+
+get_urls_to_connect()
